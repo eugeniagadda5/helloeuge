@@ -3,30 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eugenia Gadda Fernández | Portfolio & Dirección Creativa</title>
+  <title>Euge Gadda | Home Portfolio</title>
   
-  <!-- Fuente Nunito (Google Fonts) -->
+  <!-- Carga de tipografía Arapey y Montserrat para botones/navegación -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       1. VARIABLES & RESET ORGANICO
-       ========================================================================== */
+    /* VARIABLES Y RESET */
     :root {
-      --bg-color: #fcfbf9; /* Crema suave orgánico */
-      --card-bg: #ffffff;
-      --text-main: #1c1c1e;
-      --text-muted: #6e6e73;
-      --accent: #2c2c2e;
-      --accent-soft: #f0eee9;
-      --border-color: #e5e3dd;
-      --font-family: 'Nunito', sans-serif;
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --btn-dark: #3a3a3a;
+      --btn-border: #3a3a3a;
+      --font-serif: 'Arapey', serif;
+      --font-sans: 'Montserrat', sans-serif;
     }
 
     * {
@@ -37,488 +29,211 @@
 
     body {
       background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-family);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      color: var(--text-color);
+      font-family: var(--font-serif);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img, video {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-
-    /* ==========================================================================
-       2. NAVEGACIÓN MINIMALISTA
-       ========================================================================== */
+    /* HEADER / NAVEGACIÓN */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      padding: 24px 5vw;
+      padding: 40px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(252, 251, 249, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(229, 227, 221, 0.5);
     }
 
-    .brand {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
+    .logo-container img {
+      width: 50px;
+      height: auto;
+      display: block;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 30px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
       font-weight: 600;
-      color: var(--text-muted);
-      transition: var(--transition);
+      letter-spacing: 0.05em;
+      color: var(--text-color);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    /* MAIN / SECCIÓN HERO */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
+      padding: 20px 40px;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text-main);
-    }
-
-    /* ==========================================================================
-       3. HERO SECTION (BIENVENIDA)
-       ========================================================================== */
-    .hero {
-      padding: 160px 5vw 80px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      padding: 6px 14px;
-      background: var(--accent-soft);
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      z-index: 2;
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      max-width: 900px;
-    }
-
-    .hero-bio {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      color: var(--text-muted);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 400;
-      max-width: 720px;
+      line-height: 1.3;
+      color: var(--text-color);
       margin-bottom: 40px;
     }
 
-    /* ==========================================================================
-       4. FILTROS DE CATEGORÍA
-       ========================================================================== */
-    .filters-container {
-      padding: 0 5vw 40px;
-      max-width: 1400px;
-      margin: 0 auto;
+    .hero-title .italic {
+      font-style: italic;
     }
 
-    .filters {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 10px 20px;
-      border: 1px solid var(--border-color);
-      border-radius: 30px;
-      background: transparent;
-      font-family: var(--font-family);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--text-main);
-      color: var(--bg-color);
-      border-color: var(--text-main);
-    }
-
-    /* ==========================================================================
-       5. GRILLA DE PROYECTOS (ESTILO HELLOPIERI)
-       ========================================================================== */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 32px;
-      padding: 0 5vw 120px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-      border-color: transparent;
-    }
-
-    .media-container {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: var(--accent-soft);
-    }
-
-    .media-container img,
-    .media-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .project-card:hover .media-container img,
-    .project-card:hover .media-container video {
-      transform: scale(1.04);
-    }
-
-    .project-info {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .project-category {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 800;
-      color: var(--text-muted);
-    }
-
-    .project-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .project-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    /* ==========================================================================
-       6. SECCIÓN SOBRE MÍ & EXPERIENCIA
-       ========================================================================== */
-    .about-section {
-      padding: 100px 5vw;
-      background: var(--card-bg);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .about-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 60px;
-    }
-
-    .about-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      position: sticky;
-      top: 120px;
-    }
-
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .exp-item {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 24px;
-    }
-
-    .exp-item:last-child {
-      border-bottom: none;
-    }
-
-    .exp-role {
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .exp-company {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .exp-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    /* ==========================================================================
-       7. FOOTER & CONTACTO
-       ========================================================================== */
-    footer {
-      padding: 100px 5vw 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .footer-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    .cta-button {
+    /* ESTILO DE IMAGEN FLOWER/CORTADA A LA IZQUIERDA DEL TEXTO */
+    .inline-photo {
       display: inline-block;
-      padding: 16px 36px;
-      background: var(--text-main);
-      color: var(--bg-color);
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: var(--transition);
-      margin-bottom: 60px;
+      vertical-align: middle;
+      width: 80px;
+      height: 80px;
+      margin-right: 12px;
+      margin-bottom: 8px;
+      border-radius: 50%; /* O ajustá según tu máscara de flor */
+      object-fit: cover;
     }
 
-    .cta-button:hover {
-      transform: scale(1.05);
-      background: #000;
-    }
-
-    .footer-bottom {
+    /* BOTONES */
+    .cta-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 40px;
-      border-top: 1px solid var(--border-color);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .social-links {
-      display: flex;
+      justify-content: center;
       gap: 20px;
-      list-style: none;
+      margin-top: 10px;
     }
 
-    /* ==========================================================================
-       8. RESPONSIVE DESIGN
-       ========================================================================== */
-    @media (max-width: 768px) {
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 12px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
 
-      .about-container {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+    .btn-dark {
+      background-color: var(--btn-dark);
+      color: #ffffff;
+      border: 2px solid var(--btn-dark);
+    }
 
-      .about-title {
-        position: static;
-      }
+    .btn-dark:hover {
+      background-color: #000;
+      border-color: #000;
+    }
 
-      .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-color);
+      border: 1.5px solid var(--btn-border);
+    }
+
+    .btn-outline:hover {
+      background-color: #f5f5f5;
+    }
+
+    /* ELEMENTOS DECORATIVOS A LA DERECHA */
+    .decorations-right {
+      position: absolute;
+      right: 5%;
+      bottom: 15%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .badge-pink {
+      width: 170px;
+      transform: rotate(8deg);
+      margin-bottom: -30px;
+      margin-right: -10px;
+    }
+
+    .badge-purple {
+      width: 100px;
+      transform: rotate(-5deg);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header {
+        padding: 20px;
+      }
+      .decorations-right {
+        display: none; /* Oculta stickers en celular para evitar superposición */
+      }
+      .hero-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVEGACIÓN -->
+  <!-- HEADER -->
   <header>
-    <div class="brand">Eugenia Gadda</div>
-    <ul class="nav-links">
-      <li><a href="#work" class="active">Trabajos</a></li>
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
+    <div class="logo-container">
+      <!-- Cambiá "logo.png" por la ruta de tu isotipo 'e' -->
+      <img src="logo.png" alt="Logo e">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#trabajo">TRABAJO</a></li>
+        <li><a href="#sobre-mi">SOBRE MÍ</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <span class="hero-tag">Especialista en Comunicación Digital & IA</span>
-    <h1 class="hero-title">Estrategia, contenidos dinámicos y narrativa audiovisual moderna.</h1>
-    <p class="hero-bio">Combino creatividad, educación digital y herramientas de IA aplicada para construir piezas de impacto tanto en la gestión pública como para marcas de escala masiva.</p>
-  </section>
+  <!-- SECCIÓN PRINCIPAL -->
+  <main>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        ¡Hola! Soy <span class="italic">Euge Gadda</span><br>
+        <!-- Reemplazá foto.jpg por tu foto con forma de flor -->
+        <img src="foto.jpg" alt="Euge Gadda" class="inline-photo"> 
+        Lic. Prof. especializada en<br>
+        Comunicación ༄ Proyectos Multimedia<br>
+        con experiencia en Gestión & Producción
+      </h1>
 
-  <!-- FILTROS -->
-  <div class="filters-container">
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="audiovisual">Audiovisual & Short-Form</button>
-      <button class="filter-btn" data-filter="estrategia">Estrategia & Redes</button>
-      <button class="filter-btn" data-filter="ia">IA & Innovación</button>
-    </div>
-  </div>
-
-  <!-- GRILLA DE PROYECTOS -->
-  <section id="work" class="portfolio-grid">
-
-    <!-- Proyecto 1 -->
-    <article class="project-card" data-category="estrategia">
-      <div class="media-container">
-        <!-- Reemplazar src con la imagen o video del proyecto -->
-        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Artes Group & Movistar Arena">
-      </div>
-      <div class="project-info">
-        <span class="project-category">Estrategia & Redes</span>
-        <h3 class="project-title">Artes Group & Movistar Arena</h3>
-        <p class="project-desc">Estrategia de comunicación multiplataforma y contenidos para pauta y difusión de shows masivos.</p>
-      </div>
-    </article>
-
-    <!-- Proyecto 2 -->
-    <article class="project-card" data-category="audiovisual">
-      <div class="media-container">
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="GCABA Educación">
-      </div>
-      <div class="project-info">
-        <span class="project-category">Audiovisual & Short-Form</span>
-        <h3 class="project-title">Ministerio de Educación GCABA</h3>
-        <p class="project-desc">Creación de piezas audiovisuales orgánicas, reels institucionales y coordinación pedagógica digital.</p>
-      </div>
-    </article>
-
-    <!-- Proyecto 3 -->
-    <article class="project-card" data-category="ia">
-      <div class="media-container">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Producción de Guiones con IA">
-      </div>
-      <div class="project-info">
-        <span class="project-category">IA & Innovación</span>
-        <h3 class="project-title">Guionismo & Postproducción con IA</h3>
-        <p class="project-desc">Workflows integrados con Inteligencia Artificial para acelerar el desarrollo de narrativas y edición rápida.</p>
-      </div>
-    </article>
-
-  </section>
-
-  <!-- SOBRE MÍ & EXPERIENCIA -->
-  <section id="about" class="about-section">
-    <div class="about-container">
-      <h2 class="about-title">Trayectoria & Experiencia</h2>
-      <div class="experience-list">
-        
-        <div class="exp-item">
-          <h3 class="exp-role">Estrategia de Comunicación & Contenidos</h3>
-          <div class="exp-company">Artes Group | 2026</div>
-          <p class="exp-desc">Producción multiplataforma para clientes de alta visibilidad como Movistar Arena y gestión de comunicación con artistas.</p>
-        </div>
-
-        <div class="exp-item">
-          <h3 class="exp-role">Gestión de Contenidos Digitales</h3>
-          <div class="exp-company">Ministerio de Educación GCABA | 2022 - Actualidad</div>
-          <p class="exp-desc">Responsable de comunicación visual de la Gerencia. Creación de piezas dinámicas, videos de corta duración y gestión de proyectos pedagógicos de escala gubernamental.</p>
-        </div>
-
-        <div class="exp-item">
-          <h3 class="exp-role">Formación Académica Destacada</h3>
-          <div class="exp-company">Licenciatura & Especializaciones</div>
-          <p class="exp-desc">• Lic. en Enseñanza con Tecnologías Digitales (Univ. de la Ciudad)<br>• Certificaciones Talento Tech (Marketing, Guión y Postproducción con IA)</p>
-        </div>
-
+      <div class="cta-container">
+        <a href="#contacto" class="btn btn-dark">Hablemos</a>
+        <a href="#trabajo" class="btn btn-outline">Mi trabajo</a>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER / CONTACTO -->
-  <footer id="contact">
-    <h2 class="footer-title">¿Creamos algo increíble juntos?</h2>
-    <a href="mailto:eugeniagadda@gmail.com" class="cta-button">Enviar un mensaje</a>
-    
-    <div class="footer-bottom">
-      <div>© 2026 Eugenia Gadda Fernández</div>
-      <ul class="social-links">
-        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-        <li><a href="mailto:eugeniagadda@gmail.com">Email</a></li>
-      </ul>
+    <!-- STICKERS/DECORACIONES DE LA DERECHA -->
+    <div class="decorations-right">
+      <!-- Cambiá las URLs por tus stickers en PNG transparente -->
+      <img src="sticker-hello.png" alt="Hello Badge" class="badge-pink">
+      <img src="sticker-ideas.png" alt="Ideas Badge" class="badge-purple">
     </div>
-  </footer>
+  </main>
 
-  <!-- JAVASCRIPT: FILTROS Y INTERACTIVIDAD -->
-  <script>
-    // Filtrado interactivo estilo Pieri
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remover activo de todos
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const filterValue = button.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-            card.style.display = 'flex';
-            setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => { card.style.display = 'none'; }, 300);
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
