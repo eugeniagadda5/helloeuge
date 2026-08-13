@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Euge Gadda | Home Portfolio</title>
+  <title>Euge Gadda | Portfolio</title>
   
-  <!-- Carga de tipografía Arapey y Montserrat para botones/navegación -->
+  <!-- Carga de Fuentes: Arapey, Montserrat, Roboto e Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Inter:wght@600;700&family=Montserrat:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES Y RESET */
+    /* ==========================================================================
+       1. VARIABLES & RESET GLOBAL
+       ========================================================================== */
     :root {
       --bg-color: #ffffff;
       --text-color: #111111;
       --btn-dark: #3a3a3a;
       --btn-border: #3a3a3a;
+      --card-border: #e2e2e2;
+      --card-bg: #ffffff;
+      --img-placeholder-bg: #e2e2e2;
       --font-serif: 'Arapey', serif;
       --font-sans: 'Montserrat', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+      --font-canva: 'Inter', sans-serif;
     }
 
     * {
@@ -27,28 +34,36 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: var(--font-serif);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       overflow-x: hidden;
     }
 
-    /* HEADER / NAVEGACIÓN */
+    /* ==========================================================================
+       2. HEADER / NAVEGACIÓN
+       ========================================================================== */
     header {
       width: 100%;
-      padding: 40px 60px;
+      padding: 30px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 100;
     }
 
     .logo-container img {
-      width: 50px;
+      width: 45px;
       height: auto;
       display: block;
     }
@@ -74,14 +89,16 @@
       opacity: 0.6;
     }
 
-    /* MAIN / SECCIÓN HERO */
-    main {
-      flex: 1;
+    /* ==========================================================================
+       3. SECCIÓN HOME
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: 20px 40px;
+      padding: 120px 40px 60px;
     }
 
     .hero-content {
@@ -102,7 +119,6 @@
       font-style: italic;
     }
 
-    /* ESTILO DE IMAGEN FLOWER/CORTADA A LA IZQUIERDA DEL TEXTO */
     .inline-photo {
       display: inline-block;
       vertical-align: middle;
@@ -110,16 +126,14 @@
       height: 80px;
       margin-right: 12px;
       margin-bottom: 8px;
-      border-radius: 50%; /* O ajustá según tu máscara de flor */
+      border-radius: 50%;
       object-fit: cover;
     }
 
-    /* BOTONES */
     .cta-container {
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-top: 10px;
     }
 
     .btn {
@@ -131,6 +145,7 @@
       text-decoration: none;
       transition: all 0.2s ease;
       display: inline-block;
+      cursor: pointer;
     }
 
     .btn-dark {
@@ -154,7 +169,6 @@
       background-color: #f5f5f5;
     }
 
-    /* ELEMENTOS DECORATIVOS A LA DERECHA */
     .decorations-right {
       position: absolute;
       right: 5%;
@@ -178,16 +192,350 @@
       transform: rotate(-5deg);
     }
 
-    /* RESPONSIVE */
+    /* ==========================================================================
+       4. SECCIÓN MI TRABAJO
+       ========================================================================== */
+    .work-section {
+      padding: 100px 5vw 120px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .work-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 60px;
+      color: var(--text-color);
+    }
+
+    .work-title .italic-bold {
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .work-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 2px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .work-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-media-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: var(--img-placeholder-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .card-media-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      padding: 0 8px 8px;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+
+    .card-description {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: #4a4a4a;
+      margin-bottom: 24px;
+    }
+
+    .card-btn {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-color);
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s ease;
+      align-self: flex-start;
+    }
+
+    .card-btn:hover {
+      opacity: 0.6;
+    }
+
+    /* ==========================================================================
+       5. SECCIÓN TE CUENTO SOBRE MÍ
+       ========================================================================== */
+    .about-section {
+      padding: 100px 5vw 120px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: var(--text-color);
+    }
+
+    .about-title .italic {
+      font-style: italic;
+    }
+
+    .about-description {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: #4a4a4a;
+      max-width: 780px;
+      margin: 0 auto 36px;
+    }
+
+    .about-description .italic {
+      font-style: italic;
+    }
+
+    /* Botón Hablemos :) con tipografía Canva Sans (Inter) */
+    .btn-canva-sans {
+      font-family: var(--font-canva);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 32px;
+      background-color: var(--btn-dark);
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-canva-sans:hover {
+      background-color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* IMÁGENES INFERIORES DE SOBRE MÍ */
+    .about-images-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .about-img-logo {
+      width: clamp(100px, 15vw, 160px);
+      height: auto;
+    }
+
+    .about-img-film {
+      width: clamp(160px, 25vw, 240px);
+      height: auto;
+      transform: rotate(12deg);
+      transition: transform 0.4s ease;
+    }
+
+    .about-img-film:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    /* ==========================================================================
+       6. SECCIÓN / MODAL HABLEMOS :) (POP-UP FLOTANTE)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background-color: #ffffff;
+      width: 90%;
+      max-width: 600px;
+      padding: 60px 40px;
+      border-radius: 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.2s;
+      z-index: 2;
+    }
+
+    .modal-close:hover {
+      color: #000;
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+
+    .modal-subtitle {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: #555555;
+      margin-bottom: 36px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn-modal-linkedin {
+      font-family: var(--font-canva);
+      font-weight: 700;
+      font-size: 0.95rem;
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 12px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      min-width: 260px;
+    }
+
+    .btn-modal-linkedin:hover {
+      background-color: #000;
+      transform: translateY(-2px);
+    }
+
+    .btn-modal-email {
+      font-family: var(--font-canva);
+      font-weight: 700;
+      font-size: 0.95rem;
+      background-color: transparent;
+      color: #333333;
+      border: 1.5px solid #a0a0a0;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      min-width: 280px;
+      cursor: pointer;
+    }
+
+    .btn-modal-email:hover {
+      background-color: #f7f7f7;
+      border-color: #333;
+    }
+
+    .flower-bg {
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 280px;
+      height: 280px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       7. RESPONSIVE DESIGN
+       ========================================================================== */
     @media (max-width: 900px) {
       header {
-        padding: 20px;
+        padding: 20px 30px;
       }
       .decorations-right {
-        display: none; /* Oculta stickers en celular para evitar superposición */
+        display: none;
       }
-      .hero-title {
-        font-size: 1.8rem;
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-images-container {
+        flex-direction: column;
+        gap: 20px;
       }
     }
   </style>
@@ -197,24 +545,22 @@
   <!-- HEADER -->
   <header>
     <div class="logo-container">
-      <!-- Cambiá "logo.png" por la ruta de tu isotipo 'e' -->
       <img src="logo.png" alt="Logo e">
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html">HOME</a></li>
+        <li><a href="#home">HOME</a></li>
         <li><a href="#trabajo">TRABAJO</a></li>
         <li><a href="#sobre-mi">SOBRE MÍ</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- SECCIÓN PRINCIPAL -->
-  <main>
+  <!-- SECCIÓN HOME -->
+  <section id="home" class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title">
         ¡Hola! Soy <span class="italic">Euge Gadda</span><br>
-        <!-- Reemplazá foto.jpg por tu foto con forma de flor -->
         <img src="foto.jpg" alt="Euge Gadda" class="inline-photo"> 
         Lic. Prof. especializada en<br>
         Comunicación ༄ Proyectos Multimedia<br>
@@ -222,18 +568,190 @@
       </h1>
 
       <div class="cta-container">
-        <a href="#contacto" class="btn btn-dark">Hablemos</a>
+        <!-- BOTÓN CAMBIADO: Ahora se llama "Sobre mí" y ancla hacia la sección #sobre-mi -->
+        <a href="#sobre-mi" class="btn btn-dark">Sobre mí</a>
         <a href="#trabajo" class="btn btn-outline">Mi trabajo</a>
       </div>
     </div>
 
-    <!-- STICKERS/DECORACIONES DE LA DERECHA -->
+    <!-- STICKERS / DECORACIONES -->
     <div class="decorations-right">
-      <!-- Cambiá las URLs por tus stickers en PNG transparente -->
       <img src="sticker-hello.png" alt="Hello Badge" class="badge-pink">
       <img src="sticker-ideas.png" alt="Ideas Badge" class="badge-purple">
     </div>
-  </main>
+  </section>
 
+  <!-- SECCIÓN MI TRABAJO -->
+  <section id="trabajo" class="work-section">
+    <h2 class="work-title">
+      Sí, diseño estrategias y contenidos mientras<br>
+      soy <span class="italic-bold">multitasking</span> y disfruto
+    </h2>
+
+    <div class="work-grid">
+      <!-- BOX 1 -->
+      <article class="work-card">
+        <div class="card-media-placeholder">
+          <!-- <img src="content-creator.jpg" alt="Content creator"> -->
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Content creator</h3>
+            <p class="card-description">
+              Creación de contenido multimedia estratégico para marcas, grandes eventos y sector público.
+            </p>
+          </div>
+          <a href="#seccion-content-creator" class="card-btn">Ver más →</a>
+        </div>
+      </article>
+
+      <!-- BOX 2 -->
+      <article class="work-card">
+        <div class="card-media-placeholder">
+          <!-- <img src="visual-design.jpg" alt="Visual Design"> -->
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Visual Design</h3>
+            <p class="card-description">
+              Diseño gráfico: piezas digitales, flyers, ticketeras y campañas masivas de vía pública.
+            </p>
+          </div>
+          <a href="#seccion-visual-design" class="card-btn">Ver más →</a>
+        </div>
+      </article>
+
+      <!-- BOX 3 -->
+      <article class="work-card">
+        <div class="card-media-placeholder">
+          <!-- <img src="ux-ui.jpg" alt="UX/UI & Project Lead"> -->
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">UX/UI & Project Lead</h3>
+            <p class="card-description">
+              Diseñé la experiencia (UI/UX) y lideré al equipo dev para el Ecosistema Digital del Ministerio de Educación.
+            </p>
+          </div>
+          <a href="#seccion-ux-ui" class="card-btn">Ver más →</a>
+        </div>
+      </article>
+
+      <!-- BOX 4 -->
+      <article class="work-card">
+        <div class="card-media-placeholder">
+          <!-- <img src="instructional-design.jpg" alt="Instructional Design"> -->
+        </div>
+        <div class="card-content">
+          <div>
+            <h3 class="card-title">Instructional Design</h3>
+            <p class="card-description">
+              Creación de contenidos pedagógicos y diseño instruccional para programas del Ministerio de Educación.
+            </p>
+          </div>
+          <a href="#seccion-instructional-design" class="card-btn">Ver más →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECCIÓN TE CUENTO SOBRE MÍ -->
+  <section id="sobre-mi" class="about-section">
+    <h2 class="about-title">Te cuento <span class="italic">sobre mí</span></h2>
+    
+    <p class="about-description">
+      Creo contenido audiovisual y estrategias digitales para equipos, espectáculos, y educación. Amo la cobertura en vivo, a mi gatita 🐈‍⬛ y el sushi 🍣<br>
+      En pocas palabras: <span class="italic">diseño, participo y disfruto.</span> 🌸
+    </p>
+
+    <!-- ESTE BOTÓN ES EL ÚNICO QUE ABRE EL POP-UP "HABLEMOS :)" -->
+    <button class="btn-canva-sans open-hablemos">Hablemos :)</button>
+
+    <!-- IMÁGENES INFERIORES DE SOBRE MÍ -->
+    <div class="about-images-container">
+      <img src="logo-grande.png" alt="Logo e" class="about-img-logo">
+      <img src="tira-pelicula.png" alt="Fotos Euge" class="about-img-film">
+    </div>
+  </section>
+
+  <!-- POP-UP / MODAL HABLEMOS :) -->
+  <div class="modal-overlay" id="hablemosModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal">&times;</button>
+      
+      <h2 class="modal-title">Hablemos :)</h2>
+      <p class="modal-subtitle">¿Te interesa mi perfil? Podés encontrarme acá ↓</p>
+
+      <div class="modal-buttons">
+        <a href="https://www.linkedin.com/in/eugenia-gadda-fern%C3%A1ndez-a2ab68238/" target="_blank" class="btn-modal-linkedin">
+          LinkedIn
+        </a>
+        
+        <button class="btn-modal-email" id="emailBtn">
+          eugeniagadda@gmail.com
+        </button>
+      </div>
+
+      <!-- Flor beige vectorial de fondo -->
+      <svg class="flower-bg" viewBox="0 0 100 100" fill="#f8f4ee">
+        <path d="M50 35 C40 10, 10 40, 35 50 C10 60, 40 90, 50 65 C60 90, 90 60, 65 50 C90 40, 60 10, 50 35 Z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: INTERACTIVIDAD Y ANIMACIONES -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Animación de Scroll para los boxes de trabajo
+      const cards = document.querySelectorAll('.work-card');
+      const observerOptions = { threshold: 0.15 };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 120);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      cards.forEach(card => observer.observe(card));
+
+      // 2. Control del Pop-up "Hablemos :)"
+      const modal = document.getElementById('hablemosModal');
+      const openBtns = document.querySelectorAll('.open-hablemos');
+      const closeBtn = document.getElementById('closeModal');
+
+      openBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.add('active');
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+
+      // 3. Copiar mail al hacer clic en el botón de mail
+      const emailBtn = document.getElementById('emailBtn');
+      emailBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('eugeniagadda@gmail.com');
+        const originalText = emailBtn.innerText;
+        emailBtn.innerText = '¡Copiado al portapapeles! ✨';
+        setTimeout(() => {
+          emailBtn.innerText = originalText;
+        }, 2000);
+      });
+    });
+  </script>
 </body>
 </html>
