@@ -209,10 +209,10 @@
     }
 
     /* ==========================================================================
-       4. SECCIÓN MI TRABAJO (AJUSTADO PARA QUE OCUPE EL ANCHO COMPLETO Y LLEGUE ARRIBA)
+       4. SECCIÓN MI TRABAJO
        ========================================================================== */
     .work-section {
-      padding: 100px 5vw 120px;
+      padding: 100px 5vw 60px;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -241,10 +241,10 @@
       background-color: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 20px;
-      overflow: hidden; /* Corta la imagen con las esquinas redondeadas superiores */
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 0; /* Sin padding global para que la imagen toque los bordes arriba */
+      padding: 0;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
       transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease;
       opacity: 0;
@@ -261,7 +261,6 @@
       transform: translateY(0) scale(1);
     }
 
-    /* La imagen ocupa todo el ancho y llega hasta arriba */
     .card-media-placeholder {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -278,10 +277,9 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 0; /* Las esquinas las maneja la propia card */
+      border-radius: 0;
     }
 
-    /* El texto sí lleva padding interno para separarse de los bordes */
     .card-content {
       display: flex;
       flex-direction: column;
@@ -321,6 +319,62 @@
 
     .card-btn:hover {
       opacity: 0.6;
+    }
+
+    /* ==========================================================================
+       4.1 SECCIÓN PRESENTACIÓN CANVA EMBEBIDA
+       ========================================================================== */
+    .presentation-section {
+      padding: 40px 5vw 100px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .presentation-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .canva-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      margin-top: 1.5em;
+      margin-bottom: 0.9em;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      will-change: transform;
+    }
+
+    .canva-wrapper iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .canva-caption {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .canva-caption a {
+      color: var(--text-color);
+      font-weight: 600;
+      text-decoration: underline;
     }
 
     /* ==========================================================================
@@ -619,8 +673,8 @@
       <h1 class="hero-title">
         ¡Hola! Soy <span class="italic">Euge Gadda</span> <img src="foto-titulo-euge.png" alt="Euge Gadda" class="inline-photo"><br>
         Productora y diseñadora de contenidos <span class="inline-icon">✿</span>Diseño experiencias y proyectos<br>
-        <span class="inline-icon">★
-        ⏭︎ Hago que las cosas sucedan.
+        <span class="inline-icon">★</span>
+        <span class="inline-icon">⏭︎</span> Hago que las cosas sucedan.
       </h1>
 
       <div class="cta-container">
@@ -655,8 +709,7 @@
               Creación de contenido multimedia estratégico para marcas, grandes eventos y sector público.
             </p>
           </div>
-          <!-- PEGAR ACÁ LA URL DE CONTENT CREATOR -->
-          <a href="https://drive.google.com/drive/folders/1V2p9X0gB7w-CcCjT3PDQW233TiN1LvNV?usp=sharing">Ver más →</a>
+          <a href="https://drive.google.com/drive/folders/1V2p9X0gB7w-CcCjT3PDQW233TiN1LvNV?usp=sharing" target="_blank" class="card-btn">Ver más →</a>
         </div>
       </article>
 
@@ -672,8 +725,7 @@
               Diseño gráfico: piezas digitales, flyers, ticketeras y campañas masivas de vía pública.
             </p>
         </div>
-          <!-- PEGAR ACÁ LA URL DE VISUAL DESIGN -->
-          <a href="https://drive.google.com/drive/folders/1DtDvBayp0jKaSqErloJ8sJATdouFb2nu?usp=sharing">Ver más →</a>
+          <a href="https://drive.google.com/drive/folders/1DtDvBayp0jKaSqErloJ8sJATdouFb2nu?usp=sharing" target="_blank" class="card-btn">Ver más →</a>
         </div>
       </article>
 
@@ -689,8 +741,7 @@
               Diseñé la experiencia (UI/UX) y lideré al equipo dev para el Ecosistema Digital del Ministerio de Educación.
             </p>
           </div>
-          <!-- PEGAR ACÁ LA URL DE UX/UI -->
-          <a href="https://ecosistemadigital.bue.edu.ar/">Ver más →</a>
+          <a href="https://ecosistemadigital.bue.edu.ar/" target="_blank" class="card-btn">Ver más →</a>
         </div>
       </article>
 
@@ -705,12 +756,22 @@
             <p class="card-description">
               Creación de contenidos pedagógicos y diseño instruccional para programas del Ministerio de Educación.
             </p>
-         </div>
-          <!-- PEGAR ACÁ LA URL DE INSTRUCTIONAL DESIGN -->
-          <a href="https://campused.bue.edu.ar/">Ver más →</a>
+          </div>
+          <a href="https://campused.bue.edu.ar/" target="_blank" class="card-btn">Ver más →</a>
         </div>
       </article>
     </div>
+  </section>
+
+  <!-- SECCIÓN PRESENTACIÓN CANVA EMBEBIDA -->
+  <section class="presentation-section">
+    <div class="canva-wrapper">
+      <iframe loading="lazy" src="https://www.canva.com/design/DAHYN-tcJZU/c0iWZfkCE6U2hGE6VXg_SA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+      </iframe>
+    </div>
+    <p class="canva-caption">
+      <a href="https://www.canva.com/design/DAHYN-tcJZU/c0iWZfkCE6U2hGE6VXg_SA/view?utm_content=DAHYN-tcJZU&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">PORTFOLIO DE TRABAJO</a> de Eugenia Gadda Fernández
+    </p>
   </section>
 
   <!-- SECCIÓN TE CUENTO SOBRE MÍ -->
@@ -766,7 +827,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       
-      // 1. Cambio de estilo en la barra de navegación al scrollear (Glass Effect Aumentado)
+      // 1. Cambio de estilo en la barra de navegación al scrollear
       const header = document.getElementById('mainHeader');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 30) {
@@ -776,16 +837,16 @@
         }
       });
 
-      // 2. Animación al scrollear para las Cards de Trabajo y Media de Sobre Mí
-      const animElements = document.querySelectorAll('.work-card, .about-media-col');
-      const observerOptions = { threshold: 0.2 };
+      // 2. Animación al scrollear para las Cards, Presentación y Media de Sobre Mí
+      const animElements = document.querySelectorAll('.work-card, .presentation-section, .about-media-col');
+      const observerOptions = { threshold: 0.15 };
 
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
               entry.target.classList.add('visible');
-            }, index * 100);
+            }, index * 80);
             observer.unobserve(entry.target);
           }
         });
